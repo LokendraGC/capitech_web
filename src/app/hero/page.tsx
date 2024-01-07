@@ -2,7 +2,6 @@
 import NounTab from "@/components/NounTab";
 import VerbTab from "@/components/VerbTab";
 import { useDictionary } from "@/context/dictionaryContext";
-import { useApiData } from "@/hooks/useApiData";
 import React, { useState, useRef } from "react";
 
 const Hero = () => {
