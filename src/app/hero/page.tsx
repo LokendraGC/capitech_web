@@ -17,8 +17,18 @@ const Hero = () => {
   const handleClick = async (e: any) => {
     e.preventDefault();
     if (typedData) {
-      const data = await useApiData(typedData);
-      setDictionaryData(data);
+      try {
+        const response = await fetch(
+          `https://api.dictionaryapi.dev/api/v2/entries/en/${typedData}`
+        );
+        const fetchedData = await response.json();
+        setDictionaryData(fetchedData);
+
+        return fetchedData;
+      } catch (err) {
+        console.log("Error fetching dictionary data", err);
+        setDictionaryData(null);
+      }
     }
   };
 
@@ -85,7 +95,9 @@ const Hero = () => {
           <div className="flex items-center gap-4 pl-6">
             <button
               className={`${
-                currentTab == 0 ? " bg-black text-white" : "bg-gray-200 text-black"
+                currentTab == 0
+                  ? " bg-black text-white"
+                  : "bg-gray-200 text-black"
               } rounded-md w-[67px] h-[30px]`}
               onClick={() => setCurrentTab(0)}
             >
@@ -93,7 +105,9 @@ const Hero = () => {
             </button>
             <button
               className={`${
-                currentTab == 1 ? " bg-black text-white" : "bg-gray-200 text-black"
+                currentTab == 1
+                  ? " bg-black text-white"
+                  : "bg-gray-200 text-black"
               } rounded-md w-[67px] h-[30px]`}
               onClick={() => setCurrentTab(1)}
             >
