@@ -5,7 +5,7 @@ import { useDictionary } from "@/context/dictionaryContext";
 import React, { useState, useRef } from "react";
 
 const Hero = () => {
-  const audioRef = useRef();
+  const audioRef = useRef<HTMLAudioElement>();
 
   const [play, setPlay] = useState(false);
   const [typedData, setTypedData] = useState("");

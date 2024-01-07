@@ -4,12 +4,10 @@ import VerbTab from "@/components/VerbTab";
 import { useDictionary } from "@/context/dictionaryContext";
 import React, { useRef, useState } from "react";
 
-const page = () => {
-
-  const audioRef = useRef();
+const Page = () => {
+  const audioRef = useRef<HTMLAudioElement>();
   const [currentTab, setCurrentTab] = useState(0);
-  
-  
+
   const { dictionaryData } = useDictionary();
 
   console.log(dictionaryData, "info");
@@ -64,7 +62,9 @@ const page = () => {
           <div className="flex items-center gap-4 pl-6">
             <button
               className={`${
-                currentTab == 0 ? " bg-black text-white" : "bg-gray-200 text-black"
+                currentTab == 0
+                  ? " bg-black text-white"
+                  : "bg-gray-200 text-black"
               } rounded-md w-[67px] h-[30px]`}
               onClick={() => setCurrentTab(0)}
             >
@@ -72,7 +72,9 @@ const page = () => {
             </button>
             <button
               className={`${
-                currentTab == 1 ? "bg-black text-white" : "bg-gray-200 text-black"
+                currentTab == 1
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-black"
               } rounded-md w-[67px] h-[30px]`}
               onClick={() => setCurrentTab(1)}
             >
@@ -89,4 +91,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
